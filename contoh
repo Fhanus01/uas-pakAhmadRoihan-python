@@ -1,0 +1,68 @@
+# Definisikan struktur data mahasiswa
+class Mahasiswa:
+    def __init__(self, nama, nim, jurusan, fakultas):
+        self.nama = nama
+        self.nim = nim
+        self.jurusan = jurusan
+        self.fakultas = fakultas
+
+# Definisikan array/list untuk menyimpan data mahasiswa
+data_mahasiswa = []
+
+# Fungsi tambah_data()
+def tambah_data():
+    nama = input("Masukkan nama mahasiswa: ")
+    nim = input("Masukkan nim mahasiswa: ")
+    jurusan = input("Masukkan jurusan mahasiswa: ")
+    fakultas = input("Masukkan fakultas mahasiswa: ")
+    mahasiswa = Mahasiswa(nama, nim, jurusan, fakultas)
+    data_mahasiswa.append(mahasiswa)
+
+# Fungsi hapus_data()
+def hapus_data():
+    nim = input("Masukkan nim mahasiswa yang ingin dihapus: ")
+    for mahasiswa in data_mahasiswa:
+        if mahasiswa.nim == nim:
+            data_mahasiswa.remove(mahasiswa)
+            print("Data mahasiswa berhasil dihapus.")
+            return
+    print("Data mahasiswa tidak ditemukan.")
+
+# Fungsi ubah_data()
+def ubah_data():
+    nim = input("Masukkan nim mahasiswa yang ingin diubah: ")
+    for mahasiswa in data_mahasiswa:
+        if mahasiswa.nim == nim:
+            mahasiswa.nama = input("Masukkan nama mahasiswa baru: ")
+            mahasiswa.jurusan = input("Masukkan jurusan mahasiswa baru: ")
+            mahasiswa.fakultas = input("Masukkan fakultas mahasiswa baru: ")
+            print("Data mahasiswa berhasil diubah.")
+            return
+    print("Data mahasiswa tidak ditemukan.")
+
+# Fungsi tampilkan_data()
+def tampilkan_data():
+    for mahasiswa in data_mahasiswa:
+        print("Nama:", mahasiswa.nama)
+        print("Nim:", mahasiswa.nim)
+        print("Jurusan:", mahasiswa.jurusan)
+        print("Fakultas:", mahasiswa.fakultas)
+        print("------------------------")
+
+# Fungsi cari_data()
+def cari_data():
+    nama = input("Masukkan nama mahasiswa yang ingin dicari: ")
+    for mahasiswa in data_mahasiswa:
+        if mahasiswa.nama == nama:
+            print("Nama:", mahasiswa.nama)
+            print("Nim:", mahasiswa.nim)
+            print("Jurusan:", mahasiswa.jurusan)
+            print("Fakultas:", mahasiswa.fakultas)
+            return
+    print("Data mahasiswa tidak ditemukan.")
+
+# Fungsi simpan_data()
+def simpan_data():
+    file = open("data_mahasiswa.txt", "w")
+    for mahasiswa in data_mahasiswa:
+        file.write(mahasiswa.nama + "," + mahasiswa
